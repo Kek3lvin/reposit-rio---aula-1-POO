@@ -19,3 +19,41 @@ altura = int(input('altura:'))
 perímetro = (base * 2 + altura * 2)
 diagonal = math.sqrt(base**2 + altura**2)
 print(f'Aqui estão as medidas: Área = {área} - Perímetro = {perímetro} - Diagonal = {diagonal}')
+
+#QUESTÃO 4
+frase = input('Escreva uma frase:')
+fim_palavra = frase.rsplit(maxsplit=1)[-1]
+print(fim_palavra)
+
+# LISTA 2
+
+#QUESTÃO 1
+a = int(input())
+b = int(input())
+
+x = a + b
+
+print(f'X = {x}')
+
+#QUESTÃO 2
+a = float(input()) 
+b = float(input())
+
+MEDIA = (a * 3.5 +  b * 7.5) / 11
+
+print(f'MEDIA = {MEDIA:.5f}')
+
+#QUESTÃO 3
+raio = float(input())
+pi = 3.14159
+
+volume = (4/3.0) * pi * (raio**3)
+
+print(f"VOLUME = {volume:.3f}")
+
+#QUESTÃO 4
+c,n =map(int, input().split())
+
+fim = c % n
+
+print(fim)
