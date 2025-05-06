@@ -1,3 +1,4 @@
+# 4
 class Ingresso:
     def __init__(self):
         self.dia = 'dom'
