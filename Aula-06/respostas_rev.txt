@@ -1,0 +1,20 @@
+# QUESTÃO 1
+ # 11
+ # -10
+ #  12,5
+ # 4
+ # 2,5
+print(1 - 2 + 3 * 4) 
+print(1 * 2 - 3 * 4) 
+print(1 / 2 + 3 * 4) 
+print(1 // 2 * 3 + 4) 
+print(1 + 2 * 3 / 4)
+
+# QUESTÃO 2
+numeros = input('Digite três números inteiros separados por espaço:')
+
+a,b,c = map(int,numeros.split())
+
+soma_pares = sum(num for num in [a,b,c] if num % 2 ==0)
+
+print(f'soma dos pares: {soma_pares}')
