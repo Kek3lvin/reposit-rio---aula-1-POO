@@ -11,10 +11,26 @@ print(1 // 2 * 3 + 4)
 print(1 + 2 * 3 / 4)
 
 # QUESTÃO 2
-numeros = input('Digite três números inteiros separados por espaço:')
 
-a,b,c = map(int,numeros.split())
+entrada = input("Escreva três números separadoss por espaço:")
+numeros = entrada.split()
 
-soma_pares = sum(num for num in [a,b,c] if num % 2 ==0)
+soma_pares = 0
+ 
+for num in numeros:
+    n = int(num)  
+    if n % 2 == 0:
+        soma_pares +=  n
 
-print(f'soma dos pares: {soma_pares}')
+print(f'Soma dos pares é: {soma_pares}')
+
+# QUESTÃ0 3
+
+frase = input("Escreva uma frase:")
+
+nova_frase = ''
+
+for i in range(len(frase)):
+    if i % 2 == 0:
+        nova_frase += frase[i]
+print(nova_frase)
