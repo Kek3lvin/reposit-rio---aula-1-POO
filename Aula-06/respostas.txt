@@ -1,4 +1,17 @@
+# 1
+class circulo:
+    def __init__(self):
+        self.raio = 0
+        self.p = 3.14
+    def area_c(self):
+        return self.p * self.raio ** 2
+    def circ_c(self):
+        return 2 * self.p * self.raio
 
+x = circulo()
+x.raio = int(input('Escreva o raio do círculo:'))
+print(f'A área do círculo é: {x.area_c()}')
+print(f'A circunferência do círculo é: {x.circ_c()}cm')
 
 
 
