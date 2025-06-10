@@ -43,7 +43,7 @@ class ViagemUI: # Interface do usuário
         x.set_km(float(input('Informe a distância percorrida:')))
         x.set_l(float(input('Informe a quantida de litros:')))
         print(x)
-
+                
 ViagemUI.main()
 
         
