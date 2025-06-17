@@ -23,7 +23,7 @@ class Viagem:
     def consumo(self):
         return self.__km / self.__l
     def __str__(self):
-        return f'A quantida de litros consumida enquanto você ia para {self.__dst} foi: {self.consumo()}'
+        return f' Destino: {self.__dst}, Quilômetros: {self.__km}, Litros: {self.__l}. Quantidade de litros consumida: {self.consumo():.2f}'
 
 class ViagemUI: # Interface do usuário
     @staticmethod
