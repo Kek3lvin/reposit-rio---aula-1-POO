@@ -1,28 +1,3 @@
-class Agua:
-    def __init__(self):    # Encapsulamento
-        self.__mes = 1
-        self.__ano = 2025
-        self.__consumo = 0
-    def set_mes(self, v):  # método de acesso: set para ajustar o valor do atributo
-        if v < 1 or v > 12: raise ValueError("O mês deve estar entre 1 e 12")   # validação
-        self.__mes = v  
-    def set_ano(self, v):
-        if v == 0: raise ValueError("O ano não pode ser zero")                  # validação
-        self.__ano = v
-    def set_consumo(self, v):
-        if v < 0: raise ValueError("O consumo não pode ser negativo")           # validação
-        self.__consumo = v   
-    def get_mes(self):     # método de acesso: get para retornar o valor do atributo
-        return self.__mes           
-    def get_ano(self):
-        return self.__ano           
-    def get_consumo(self):
-        return self.__consumo           
-    def valor(self):
-        if self.__consumo <= 10: return 38
-        if 11 <= self.__consumo <= 20: return 38 + (self.__consumo - 10) * 5
-        if self.__consumo > 20: return 38 + 50 + (self.__consumo - 20) * 6  
-
 
 
 class UI: # UI = User Interface: print e input
