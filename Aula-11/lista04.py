@@ -5,7 +5,13 @@ class Contato:
         self.__email = e
         self.__fone = f
     def get_nome(self):
-        return self.__nome    
+        return self.__nome 
+    def get_id(self):
+        return self.__id
+    def get_email(self):
+        return self.__email
+    def get_fone(self):
+        return self.__fone
     def __str__(self):
         return f"{self.__id} - {self.__nome} - {self.__email} - {self.__fone}"
 
@@ -40,7 +46,14 @@ class ContatoUI:
             print(c)
     @classmethod    
     def atualizar(cls):
-        pass
+       for i in cls.__contatos:
+        
+        id = int(input('Informe o id do contato que você quer atualizar:'))
+        novo_nome = input("Informe o novo nome: ")
+        novo_email = input("Informe o novo email: ")
+        novo_fone = input("Informe o novo fone: ")
+        atualizar = Contato(id, novo_nome, novo_email, novo_fone)
+        cls.__contatos.append(atualizar)
     @classmethod    
     def excluir(cls):
         pass
