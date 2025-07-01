@@ -1,3 +1,80 @@
+#QUESTÃO 1 - Bingo
+import random
+
+class Bingo:
+    def __init__(self):
+        self.__numBolas = 0
+        self.__bolas = []
+        self.__sorteados = []
+
+    def get_numBolas(self):
+        return self.__numBolas
+
+    def iniciar(self):
+        self.__numBolas = int(input("Escolha a quantidade de bolas: "))
+        self.__bolas = list(range(1, self.__numBolas + 1))
+        random.shuffle(self.__bolas)
+        self.__sorteados.clear()
+        print(f" Jogo iniciado com {self.__numBolas} bolas.")
+
+    def sortear(self):
+        if not self.__bolas:
+            return -1  
+        bola = self.__bolas.pop()
+        self.__sorteados.append(bola)
+        return bola
+
+    def sorteados(self):
+        return list(self.__sorteados)
+
+
+class BingoUI:
+    __jogo = None
+    @classmethod
+    def menu(cls):
+       op = int(input('Escolha uma opção: 1-Iniciar nova partida, 2-Sortear, 3-Checar sorteados, 4-Sair'))
+       return op
+    @classmethod
+    def main(cls):
+        op = 0
+        while op != 4:
+            op = cls.menu()
+            if op == 1:BingoUI.iniciar_jogo()
+            if op == 2: BingoUI.sortear_numero()
+            if op == 3:BingoUI.mostrar_sorteados()
+            if op == 4: print("Saindo...")
+            else:
+                print("Opção inválida!")
+    @classmethod
+    def iniciar_jogo(cls):
+        cls.__jogo = Bingo()
+        cls.__jogo.iniciar()
+
+    @classmethod
+    def sortear_numero(cls):
+        if cls.__jogo is None:
+            print(" Jogo não iniciado. Para iniciar, escolha a opção 1.")
+            return
+        bola = cls.__jogo.sortear()
+        if bola == -1:
+            print("Todas as bolas já foram sorteadas.")
+        else:
+            print(f"Bola sorteada: {bola}")
+
+    @classmethod
+    def mostrar_sorteados(cls):
+        if cls.__jogo is None:
+            print("Jogo não iniciado. Para iniciar, escolha a opção 1.")
+            return
+        s = cls.__jogo.sorteados()
+        if not s:
+            print("Nenhuma bola foi sorteada ainda.")
+        else:
+            print("Bolas sorteadas até agora:", sorted(s))
+
+BingoUI.main()
+
+
 # QUESTÃO 2 - Cadastrar contados
 class Contato:
     def __init__(self, i, n, e, f):

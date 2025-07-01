@@ -1,4 +1,10 @@
-#QUESTÃO 1 - Bingo
+ @classmethod
+    def menu(cls):
+        print("\n1 – Iniciar novo jogo")
+        print("2 – Sortear número")
+        print("3 – Verificar números sorteados")
+        print("4 – Sair")
+        return int(input("Escolha uma opção: "))#QUESTÃO 1 - Bingo
 import random
 
 class Bingo:
