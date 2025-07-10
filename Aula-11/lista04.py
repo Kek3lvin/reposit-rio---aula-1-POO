@@ -1,86 +1,3 @@
- @classmethod
-    def menu(cls):
-        print("\n1 – Iniciar novo jogo")
-        print("2 – Sortear número")
-        print("3 – Verificar números sorteados")
-        print("4 – Sair")
-        return int(input("Escolha uma opção: "))#QUESTÃO 1 - Bingo
-import random
-
-class Bingo:
-    def __init__(self):
-        self.__numBolas = 0
-        self.__bolas = []
-        self.__sorteados = []
-
-    def get_numBolas(self):
-        return self.__numBolas
-
-    def iniciar(self):
-        self.__numBolas = int(input("Escolha a quantidade de bolas: "))
-        self.__bolas = list(range(1, self.__numBolas + 1))
-        random.shuffle(self.__bolas)
-        self.__sorteados.clear()
-        print(f" Jogo iniciado com {self.__numBolas} bolas.")
-
-    def sortear(self):
-        if not self.__bolas:
-            return -1  
-        bola = self.__bolas.pop()
-        self.__sorteados.append(bola)
-        return bola
-
-    def sorteados(self):
-        return list(self.__sorteados)
-
-
-class BingoUI:
-    __jogo = None
-    @classmethod
-    def menu(cls):
-       op = int(input('Escolha uma opção: 1-Iniciar nova partida, 2-Sortear, 3-Checar sorteados, 4-Sair'))
-       return op
-    @classmethod
-    def main(cls):
-        op = 0
-        while op != 4:
-            op = cls.menu()
-            if op == 1:BingoUI.iniciar_jogo()
-            if op == 2: BingoUI.sortear_numero()
-            if op == 3:BingoUI.mostrar_sorteados()
-            if op == 4: print("Saindo...")
-            else:
-                print("Opção inválida!")
-    @classmethod
-    def iniciar_jogo(cls):
-        cls.__jogo = Bingo()
-        cls.__jogo.iniciar()
-
-    @classmethod
-    def sortear_numero(cls):
-        if cls.__jogo is None:
-            print(" Jogo não iniciado. Para iniciar, escolha a opção 1.")
-            return
-        bola = cls.__jogo.sortear()
-        if bola == -1:
-            print("Todas as bolas já foram sorteadas.")
-        else:
-            print(f"Bola sorteada: {bola}")
-
-    @classmethod
-    def mostrar_sorteados(cls):
-        if cls.__jogo is None:
-            print("Jogo não iniciado. Para iniciar, escolha a opção 1.")
-            return
-        s = cls.__jogo.sorteados()
-        if not s:
-            print("Nenhuma bola foi sorteada ainda.")
-        else:
-            print("Bolas sorteadas até agora:", sorted(s))
-
-BingoUI.main()
-
-# QUESTÃO 2 - Cadastrar contados
 class Contato:
     def __init__(self, i, n, e, f):
         self.__id = i
@@ -110,10 +27,12 @@ class ContatoUI:
             if op == 3: ContatoUI.atualizar()
             if op == 4: ContatoUI.excluir()
             if op == 5: ContatoUI.pesquisar()
+            
     @classmethod    
     def menu(cls):
         print("1-Inserir, 2-Listar, 3-Atualizar, 4-Excluir, 5-Pesquisar, 6-Fim")
         return int(input("Escolha uma opção: "))
+    
     @classmethod    
     def inserir(cls):
         id = int(input("Informe o id do contato: "))
@@ -124,10 +43,11 @@ class ContatoUI:
         cls.__contatos.append(c)
     @classmethod    
     def listar(cls):
-        #print(cls.__contatos)
+        if len(cls.__contatos) == 0: print('Nenhum contato cadastrado')
         for c in cls.__contatos:
             print(c)
-    @classmethod    
+    @classmethod
+
     def atualizar(cls):
        id = int(input("Informe o id do contato que você quer atualizar:"))
        for i in cls.__contatos:
@@ -141,6 +61,7 @@ class ContatoUI:
             print('Dados atualizados!')
           else:
            print('Id inexistente.')
+
     @classmethod    
     def excluir(cls):
         nome = input('Informe o nome do contato que deseja excluir: ')
@@ -148,103 +69,11 @@ class ContatoUI:
             if n.get_nome() == nome:
                 cls.__contatos.remove(n)
                 print('Contato removido!')
+
     @classmethod    
     def pesquisar(cls):
-        nome = input("Informe a inicial do nome que deseja remover: ")
+        nome = input("Informe a inicial do nome que deseja pesquisar: ")
         for c in cls.__contatos:
             if c.get_nome().startswith(nome): print(c)
 
 ContatoUI.main()
-
-
-# QUESTÃO 3 - Cadastrar países
-class Pais:
-    def __init__(self, i, n, p, a):
-        self.__id = i
-        self.__nome = n
-        self.__pop = p
-        self.__area = a
-    def get_id(self):
-        return self.__id
-    def get_nome(self):
-        return self.__nome 
-    def get_pop(self):
-        return self.__pop
-    def get_area(self):
-        return self.__area
-    def densidade(self):
-        return self.__pop / self.__area
-    def __str__(self):
-        return f"ID: {self.__id} - Nome: {self.__nome} - População: {self.__pop} - Área: {self.__area}"
-
-class PaisUI:
-    __paises= []
-    __populacao =[]
-    @classmethod    
-    def main(cls):
-        op = 0
-        while op != 6:
-            op = PaisUI.menu()
-            if op == 1: PaisUI.inserir()
-            if op == 2: PaisUI.listar()
-            if op == 3: PaisUI.atualizar()
-            if op == 4: PaisUI.excluir()
-            if op == 5: PaisUI.m_populoso()
-            if op == 6: PaisUI.m_povoado()
-            if op == 7: print('Saindo...') 
-            break
-    @classmethod    
-    def menu(cls):
-        print("1-Inserir, 2-Listar, 3-Atualizar, 4-Excluir, 5-Mais populoso, 6-Mais povoado, 7-Sair")
-        return int(input("Escolha uma opção: "))
-    @classmethod    
-    def inserir(cls):
-        id = int(input("Informe o id do país: "))
-        nome = input("Informe o nome: ")
-        pop = int(input("Informe a população: "))
-        area = int(input("Informe a área: "))
-        p1 = Pais(id, nome, pop, area)
-        cls.__paises.append(p1)
-        cls.__populacao.append(pop)
-    @classmethod    
-    def listar(cls):
-        for c in cls.__paises:
-            print(c)
-    @classmethod    
-    def atualizar(cls):
-       id = int(input("Informe o id do país que você quer atualizar:"))
-       for i in cls.__paises:
-          if i.get_id() == id:
-            nome = input("Informe o novo nome do país: ")
-            pop = int(input("Informe a nova quantidade de habitantes: "))
-            area = float(input("Informe a nova área: "))
-            atualizar = Pais(id, nome, pop, area)
-            cls.__contatos.remove(i)
-            cls.__contatos.append(atualizar)
-            print('Dados atualizados!')
-          else:
-           print('Id inexistente.')
-    @classmethod    
-    def excluir(cls):
-        nome = input('Informe o nome do país que deseja excluir: ')
-        for n in cls.__paises:
-            if n.get_nome() == nome:
-                cls.__paises.remove(n)
-                print(f' {n.get_nome()} foi removido da listas de países!')
-    @classmethod    
-    def m_populoso(cls):
-           maior_pop = max(cls.__populacao)
-           for pais in cls.__paises:
-            if pais.get_pop() == maior_pop:
-                print(f"Mais populoso: {pais.get_nome()} com {pais.get_pop()} habitantes.")
-                return
-    @classmethod
-    def m_povoado(cls):
-        densidades = [p.get_pop() / p.get_area() for p in cls.__paises]
-        maior = max(densidades)
-        for pais in cls.__paises:
-            if pais.get_pop() / pais.get_area() == maior:
-                print(f"Mais povoado: {pais.get_nome()} com densidade {maior:.2f} hab/unidade de área.")
-                return
-       
-PaisUI.main()
