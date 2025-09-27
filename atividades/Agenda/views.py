@@ -6,6 +6,9 @@ class View:
     # 1° view Cliente
     def cliente_listar():
         return ClienteDAO.listar()
+    def cliente_listar_id(id):
+        cliente = ClienteDAO.listar_id(id)
+        return cliente
     def cliente_inserir(nome, email, fone):
         cliente = Cliente(0, nome, email, fone)
         ClienteDAO.inserir(cliente)
@@ -19,6 +22,9 @@ class View:
     #2° view Servico
     def servico_listar():
         return ServicoDAO.listar()
+    def servico_listar_id(id):
+        servico = ServicoDAO.listar_id(id)
+        return servico
     def servico_inserir(desc, valor):
         servico = Servico(0, desc, valor)
         ServicoDAO.inserir(servico)
@@ -38,13 +44,16 @@ class View:
       HorarioDAO.inserir(c)
     def horario_listar():
       return HorarioDAO.listar()  
+    def horario_listar_id(id):
+         horario = HorarioDAO.listar_id(id)
+         return horario
     def horario_atualizar(data, confirmado, id_cliente, id_servico):
       c = Horario(0, data)
       c.set_confirmado(confirmado)
       c.set_id_cliente(id_cliente)
       c.set_id_servico(id_servico)
       HorarioDAO.inserir(c)
-    def horario_excluir():
-      c = HorarioDAO.listar(id, None)  
+    def horario_excluir(id):
+      c = Horario(id, None)  
       HorarioDAO.excluir(c)
     
