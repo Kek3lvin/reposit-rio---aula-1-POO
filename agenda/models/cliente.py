@@ -8,7 +8,7 @@ class Cliente:
   def __str__(self):
    return f'{self.__id} - {self.__nome} - {self.__email} - {self.__fone}'
 
- # ENCAPSULAMENTO
+ # ENCAPSULAMENTOm,nbjkbj
   def get_id(self): return self.__id
   def get_nome(self): return self.__nome
   def get_email(self): return self.__email
